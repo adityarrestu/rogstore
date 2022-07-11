@@ -2,6 +2,6 @@
   $host = 'localhost';
   $user = 'root';
   $password = '';
-  $db = 'tokobaju';
+  $db = 'rogstore';
   $conn = mysqli_connect($host, $user, $password, $db) or die ("Koneksi gagal: ".mysqli_connect_error()); 
 ?>
