@@ -26,10 +26,10 @@ if (isset($_SESSION['login'])) {
 
 <body>
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-sm navbar-light bg-dark sticky-top">
-    <div class="container">
+  <nav class="navbar navbar-expand-sm navbar-light navbar-dark bg-dark sticky-top">
+    <div class="container-xxl">
       <a class="navbar-brand" href="#">
-        <img src="./img/logo2.png" style="max-height: 2.8rem" alt="" />
+        <img src="./img/logo.png" style="max-height: 2rem" alt="" />
       </a>
       <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
