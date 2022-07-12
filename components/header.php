@@ -65,7 +65,7 @@ if (isset($_SESSION['login'])) {
             <!-- Dropdown Btn -->
             <div class="dropdown">
               <div class="dropdown-toggle-split" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                <a class="dropdown-item d-flex align-items-center fs-6" href="?menu=profil&u=<?= $username ?>">
+                <a class="dropdown-item d-flex align-items-center text-white fs-6" href="?menu=profil&u=<?= $username ?>">
                   <img src="./img/<?= $user[0]['image'] ?>" class="rounded-circle me-3" alt="" style="width: 2.5rem" />
                   <?= $user[0]["name"]; ?>
                 </a>
