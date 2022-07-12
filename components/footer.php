@@ -9,7 +9,7 @@
       <!-- Social Media -->
       <ul class="nav col-md-4 justify-content-end list-unstyled-none d-flex">
         <li class="ms-3">
-          <a href="" class="text-muted">
+          <a href="https://www.facebook.com/groups/2113325788883387/" class="text-muted">
             <i class="bx bxl-facebook text-white fs-3"></i>
           </a>
         </li>
@@ -19,7 +19,7 @@
           </a>
         </li>
         <li class="ms-3">
-          <a href="" class="text-muted">
+          <a href="https://www.instagram.com/asusrog.id/" class="text-muted">
             <i class="bx bxl-instagram text-white fs-3"></i>
           </a>
         </li>
