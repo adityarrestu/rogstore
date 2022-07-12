@@ -28,11 +28,11 @@ function content($menu) {
   if($cek == 'dashboard') {
     $file = 'dashboard.php';
   }
-  if($cek == 'delete-carousel') {
-    $file = 'delete-carousel.php';
+  if($cek == 'delete-banner') {
+    $file = 'delete-banner.php';
   }
-  if($cek == 'edit-carousel') {
-    $file = 'edit-carousel.php';
+  if($cek == 'edit-banner') {
+    $file = 'edit-banner.php';
   }
   if($cek == 'delete-product') {
     $file = 'delete-product.php';

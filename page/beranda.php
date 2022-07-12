@@ -1,4 +1,5 @@
 <?php 
-include './components/carousel.php';
+
+include './components/banner.php';
 
 ?>

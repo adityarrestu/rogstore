@@ -1,3 +1,4 @@
+<div class="bg-dark">
 <?php 
 include './function/fungsi-halaman.php';
 require_once './components/header.php';
@@ -8,3 +9,5 @@ include 'page/'.$file;
 
 require_once './components/footer.php';
 ?>
+
+</div>

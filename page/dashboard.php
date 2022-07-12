@@ -1,91 +1,142 @@
 <?php
+include './function/add-banner.php';
+include './function/add-product.php';
 
-$carousels = query("SELECT * FROM carousel");
+if(isset($_POST['banner'])) {
+  addBanner($_POST);
+}
+
+if(isset($_POST['produk'])) {
+  addProduct($_POST);
+}
+
+$banners = query("SELECT * FROM banner");
+$products = query("SELECT * FROM products");
+
 ?>
 <!-- MDB -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.css" rel="stylesheet" />
-<div class="container">
+<div class="container" style="min-height: 80vh;">
   <div class="card my-4">
     <div class="card-body">
       <p class="fs-4 card-title">Dashboard Administrator</p>
+
+      <!-- Nav Tab -->
       <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
-          <button class="nav-link active" id="carousel-tab" data-bs-toggle="tab" data-bs-target="#carousel-tab-pane" type="button" role="tab" aria-controls="carousel-tab-pane" aria-selected="true">Carousel</button>
+          <button 
+            class="nav-link active" 
+            id="banner-tab" 
+            data-bs-toggle="tab" 
+            data-bs-target="#banner-tab-pane" 
+            type="button" 
+            role="tab" 
+            aria-controls="banner-tab-pane" 
+            aria-selected="true"
+          >Banner</button>
         </li>
         <li class="nav-item" role="presentation">
-          <button class="nav-link" id="product-tab" data-bs-toggle="tab" data-bs-target="#product-tab-pane" type="button" role="tab" aria-controls="product-tab-pane" aria-selected="false">Product</button>
+          <button 
+            class="nav-link" 
+            id="product-tab" 
+            data-bs-toggle="tab" 
+            data-bs-target="#product-tab-pane" 
+            type="button" 
+            role="tab" 
+            aria-controls="product-tab-pane" 
+            aria-selected="false"
+          >Product</button>
         </li>
       </ul>
+
+      <!-- Tab Content -->
       <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade show active" id="carousel-tab-pane" role="tabpanel" aria-labelledby="carousel-tab" tabindex="0">
+        <div 
+          class="tab-pane fade show active" 
+          id="banner-tab-pane" 
+          role="tabpanel" 
+          aria-labelledby="banner-tab" 
+          tabindex="0"
+        >
           <div class="col-12 my-3 position-relative">
-            <button type="button" class="btn-close d-none" id="close" aria-label="Close"></button>
+            <button 
+              type="button" 
+              class="btn-close d-none" 
+              id="close" 
+              aria-label="Close"
+            ></button>
+
+            <!-- Preview Img -->
             <div class=" d-flex align-items-center justify-content-center">
-              <img src="" class="img-fluid" id="carouselImg" style="max-height: 64vh;" alt="">
+              <img src="" class="img-fluid" id="bannerImg" style="max-height: 64vh;" alt="">
             </div>
           </div>
 
-          <!-- Form tambah carousel -->
-          <form action="" method="POST" class="my-3 px-2" enctype="multipart/form-data">
-            <p class="fs-5">Tambah Carousel Baru</p>
+          <!-- Form tambah banner -->
+          <form 
+            action="" 
+            method="POST" 
+            class="my-3 px-2" 
+            enctype="multipart/form-data"
+          >
+            <p class="fs-5">Tambah Banner Baru</p>
             <div class="row row-cols-1 g-3">
               <div class="col-12 col-md-8">
-                <input type="file" class="form-control" id="carousel" name="gambar" onchange="previewImg(event)">
-              </div>
-              <div class="col-12 col-md-8">
-                <label for="title" class="form-label">Title</label>
-                <input type="text" class="form-control" id="title" name="title">
-              </div>
-              <div class="col-12 col-md-8">
-                <label for="description" class="form-label">Description</label>
-                <input type="text" class="form-control" id="description" name="description">
+
+                <!-- Input Banner Image -->
+                <input type="file" class="form-control" id="banner" name="gambar" onchange="previewImg(event)">
               </div>
               <div class="justify-content-start">
-                <button type="submit" class="btn btn-primary" name="carousel">Tambah</button>
+                <button 
+                  type="submit" 
+                  class="btn btn-primary" 
+                  name="banner"
+                >Tambah</button>
               </div>
             </div>
           </form>
 
-          <!-- Mneampilkan caorusel -->
-          <p class="fs-4 mt-5">Carousel Tampil</p>
-          <?php foreach ($carousels as $carousel) : ?>
-            <div class="carousel mb-4">
-              <div class="carousel-inner relative" style="max-height: 64vh">
+          <!-- Mneampilkan banner -->
+          <p class="fs-4 mt-5">Banner Tampil</p>
+          <?php foreach ($banners as $banner) : ?>
+            <div class="banner mb-4">
+              <div class="banner-inner relative" style="max-height: 64vh">
 
                 <!-- Tombol opsi -->
                 <div class="position-absolute" style="z-index: 1000;">
-                  <button class="btn btn-danger px-2 pb-1 pt-2" data-bs-toggle="modal" data-bs-target="#delete-carousel" data-bs-carousel="index.php?menu=delete-carousel&id=<?= $carousel['carouselId'] ?>">
+                  <button class="btn btn-danger px-2 pb-1 pt-2" data-bs-toggle="modal" data-bs-target="#delete-banner" data-bs-banner="index.php?menu=delete-banner&id=<?= $banner['bannerId'] ?>">
                     <i class="bx bxs-trash fs-4"></i>
                   </button>
-                  <a href="index.php?menu=edit-carousel&id=<?= $carousel['carouselId'] ?>">
+                  <a href="index.php?menu=edit-banner&id=<?= $banner['bannerId'] ?>">
                     <button class="btn btn-info px-2 pb-1 pt-2">
                       <i class='bx bxs-edit fs-4' style="color: #FFFFFF;"></i>
                     </button>
                   </a>
                 </div>
 
-                <!-- Tampilan carousel -->
-                <div class="carousel-item active" style="max-height: 64vh">
-                  <img src="./img/<?= $carousel['image']; ?>" class="d-block w-100" alt="..." />
-                  <div class="carousel-caption d-none d-md-block">
-                    <h5><?= $carousel['title']; ?></h5>
-                    <p><?= $carousel['description']; ?></p>
-                  </div>
+                <!-- Tampilan banner -->
+                <div class="banner-item active">
+                  <img src="./img/<?= $banner['image']; ?>" class="d-block w-100" style="max-height: 64vh; object-fit: cover;" alt="..." />
                 </div>
               </div>
             </div>
           <?php endforeach; ?>
         </div>
-        <div class="tab-pane fade" id="product-tab-pane" role="tabpanel" aria-labelledby="product-tab" tabindex="0">
 
+        <!-- Tab Product -->
+        <div class="tab-pane fade" id="product-tab-pane" role="tabpanel" aria-labelledby="product-tab" tabindex="0">
+          
+          <!-- Preview Product Image -->
           <div class="col-12 my-3 position-relative">
             <button type="button" class="btn-close d-none" id="closeProduct" aria-label="Close"></button>
             <div class=" d-flex align-items-center justify-content-center">
               <img src="" class="img-fluid" id="productImg" style="max-height: 50vh;" alt="">
             </div>
           </div>
+
+          <!-- Form Product -->
           <form action="" method="POST" class="my-3 px-2" enctype="multipart/form-data">
-            <p class="fs-5">Tambah Product</p>
+            <p class="fs-5">Tambah Produk</p>
             <div class="row row-cols-1 g-3">
               <div class="col-12 col-md-8">
                 <input type="file" class="form-control" id="product" name="gambar" onchange="previewProductImg(event)">
@@ -97,6 +148,10 @@ $carousels = query("SELECT * FROM carousel");
               <div class="col-12 col-md-8">
                 <label for="harga" class="form-label">Harga Produk</label>
                 <input type="number" class="form-control" id="harga" name="harga" required>
+              </div>
+              <div class="col-12 col-md-8">
+                <label for="description" class="form-label">Deskripsi</label>
+                <input type="text" class="form-control" id="description" name="description" required>
               </div>
               <div class="col-12 col-md-8">
                 <div class="form-check">
@@ -145,6 +200,7 @@ $carousels = query("SELECT * FROM carousel");
                   <div class="card-body">
                     <h6 class="card-title"><?= $product['name'] ?></h6>
                     <p><?= $product['harga'] ?></p>
+                    <p class=" mt-2"><?= $product['description'] ?></p>
                   </div>
                 </div>
               </div>
@@ -158,15 +214,15 @@ $carousels = query("SELECT * FROM carousel");
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="delete-carousel" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" id="delete-banner" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
   <div class="modal-dialog modal-sm" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Hapus Carousel</h5>
+        <h5 class="modal-title">Hapus Banner</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        Ingin menghapus carousel ini?
+        Ingin menghapus banner ini?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
@@ -203,8 +259,8 @@ $carousels = query("SELECT * FROM carousel");
   function previewImg(event) {
     let close = document.getElementById('close');
     let reader = new FileReader();
-    let output = document.getElementById('carouselImg');
-    let input = document.getElementById('carousel');
+    let output = document.getElementById('bannerImg');
+    let input = document.getElementById('banner');
 
     reader.onload = function() {
       output.src = reader.result;
@@ -241,12 +297,12 @@ $carousels = query("SELECT * FROM carousel");
     })
   }
 
-  const modalCarousel = document.getElementById('delete-carousel')
+  const modalCarousel = document.getElementById('delete-banner')
   modalCarousel.addEventListener('show.bs.modal', event => {
     // Button that triggered the modal
     const button = event.relatedTarget
     // Extract info from data-bs-* attributes
-    const idCarousel = button.getAttribute('data-bs-carousel')
+    const idCarousel = button.getAttribute('data-bs-banner')
     
     // Update the modal's content.
     const btnHapus = modalCarousel.querySelector('#hapus')

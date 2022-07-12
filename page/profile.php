@@ -4,7 +4,7 @@
 ?>
 
 <head>
-  <title><?= $postSender[0]['name'] ?> - Creeze Cloth</title>
+  <title><?= $postSender[0]['name'] ?> - ROG Store</title>
 </head>
 
 <!-- Profile -->

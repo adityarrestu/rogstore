@@ -8,7 +8,7 @@
   <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" />
   <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
-  <title>Creeze Cloth</title>
+  <title>ROG Store</title>
 </head>
 
 <?php
@@ -26,7 +26,7 @@ if (isset($_SESSION['login'])) {
 
 <body>
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-sm navbar-light bg-light sticky-top">
+  <nav class="navbar navbar-expand-sm navbar-light bg-dark sticky-top">
     <div class="container">
       <a class="navbar-brand" href="#">
         <img src="./img/logo2.png" style="max-height: 2.8rem" alt="" />

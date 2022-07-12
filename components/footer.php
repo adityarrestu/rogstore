@@ -1,5 +1,5 @@
 <!-- Footer -->
-<footer class="bg-dark border-top">
+<footer class="bg-dark">
   <div class="container">
     <div class="d-flex flex-wrap justify-content-between align-items-center py-3">
       <!-- Copy Right -->
